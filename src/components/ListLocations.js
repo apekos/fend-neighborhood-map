@@ -4,7 +4,7 @@ class ListLocations extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className='list-locations'>
 				Locations
 			</div>
 		);

@@ -2,10 +2,10 @@ import React from 'react'
 
 function Header () {
 	return (
-		<div className="list-books-title">
+		<header>
 			<h1>Athens Sightseeing</h1>
-		</div>
+		</header>
 	)
 }
 
-export default Header
+export default Header;
