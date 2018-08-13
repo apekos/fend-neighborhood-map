@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-class LocationList extends Component {
-	
+class ListLocations extends Component {
+
 	render() {
 		return (
 			<div>
@@ -11,4 +11,4 @@ class LocationList extends Component {
 	}
 }
 
-export default LocationList;
+export default ListLocations;
