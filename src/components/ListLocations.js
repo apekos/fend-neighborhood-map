@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 
 class ListLocations extends Component {
+		
 
 	render() {
-		return (
-			<div className='list-locations'>
-				Locations
-			</div>
-		);
+		const { show } = this.props
+
+		if (show) {
+			return (
+				<div className="nav">
+					Locations
+				</div>
+			);
+		} else return null;
 	}
 }
 
