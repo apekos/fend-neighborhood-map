@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ListLocations extends Component {
 	
 	render() {
-		const { query, show, showingLocations } = this.props;
+		const { query, show, showingLocations, toggleLocation } = this.props;
 
 		if (show) {
 			return (
@@ -20,7 +20,10 @@ class ListLocations extends Component {
 						<ul className="filter-results">
 							{showingLocations.map(location => {
 								return(
-									<li key={location.id}>
+									<li 
+										key={location.id}
+										onClick={() => {toggleLocation(location)}}
+									>
 										{location.name}
 									</li>
 								)

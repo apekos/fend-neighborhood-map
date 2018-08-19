@@ -12,7 +12,10 @@ class App extends Component {
 		query: '',
 		showList: true,
 		locations: locations,
-		showingLocations: locations
+		showingLocations: locations,
+		isClicked: false,
+		locationClicked: null,
+		// animation: null
 	}
 
 	updateQuery = (query) => {
@@ -35,6 +38,13 @@ class App extends Component {
 		}));
 	}
 
+	toggleInfowindow = (location) => {
+		this.setState(prevState => ({
+			isClicked: !prevState.isClicked
+		}));
+		this.setState({ locationClicked: location.id })
+	}
+
 	render() {
 		return (
 			<div className="App">
@@ -45,9 +55,14 @@ class App extends Component {
 						showingLocations={this.state.showingLocations}
 						updateQuery={this.updateQuery}
 						show={this.state.showList}
+						toggleLocation={this.toggleInfowindow}
 					/>
 					<Map 
 						locations={this.state.showingLocations}
+						toggleInfo = {this.toggleInfowindow}
+						isClicked = {this.state.isClicked}
+						locationClicked={this.state.locationClicked}
+						// animation = {this.state.animation}
 					/>
 				</div>
 			</div>
