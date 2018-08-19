@@ -2,27 +2,18 @@ import React, { Component } from 'react';
 import { Marker, InfoWindow } from 'react-google-maps';
 
 class MyMarkers extends Component {
-	// state = {
-	// 	isOpen: false
-	// }
-
-	// toggleInfo = () => {
-	// 	this.setState(prevState => ({
-	// 		isOpen: !prevState.isOpen
-	// 	}));
-	// }
 
 	render() {
-		const { id, position, isClicked, toggleInfo, locationClicked, markerLocation} = this.props;
+		const { id, position, isMarkerClicked, isLocationClicked, toggleInfo, closeInfowindow, locationClicked, markerLocation} = this.props;
 		let infoWindow;
 		let animation;
 
-		if ((isClicked === true) && (id === locationClicked)){
-			animation = 1;
+		if (((isMarkerClicked === true) || (isLocationClicked === true)) && (id === locationClicked)){
+			// animation = 1;
 			infoWindow = (
 				<InfoWindow
 					position={position}
-					onCloseClick={() => toggleInfo(markerLocation)}
+					onCloseClick={() => closeInfowindow()}
 				>
 					<p>this is an infoWindow</p>
 				</InfoWindow>
@@ -35,7 +26,7 @@ class MyMarkers extends Component {
 			<Marker
 				key={id}
 				position={position}
-				animation = {animation}
+				animation = {(isLocationClicked && (id === locationClicked)) ? 1 : 0}
 				onClick={() => toggleInfo(markerLocation)}
 			>
 				{infoWindow}

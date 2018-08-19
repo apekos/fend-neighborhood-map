@@ -13,7 +13,8 @@ class App extends Component {
 		showList: true,
 		locations: locations,
 		showingLocations: locations,
-		isClicked: false,
+		isMarkerClicked: false,
+		isLocationClicked: false,
 		locationClicked: null,
 		// animation: null
 	}
@@ -38,12 +39,26 @@ class App extends Component {
 		}));
 	}
 
-	toggleInfowindow = (location) => {
-		this.setState(prevState => ({
-			isClicked: !prevState.isClicked
-		}));
+	clickMarker = (location) => {
+		this.setState({ isMarkerClicked: true })
 		this.setState({ locationClicked: location.id })
 	}
+
+	clickLocation = (location) => {
+		this.setState({ isLocationClicked: true })
+		this.setState({ locationClicked: location.id })
+	}
+
+	closeInfowindow = () => {
+		this.setState({ isMarkerClicked: false })
+		this.setState({ isLocationClicked: false })
+	}
+	// toggleInfowindow = (location) => {
+	// 	this.setState(prevState => ({
+	// 		isClicked: !prevState.isClicked
+	// 	}));
+	// 	this.setState({ locationClicked: location.id })
+	// }
 
 	render() {
 		return (
@@ -55,12 +70,14 @@ class App extends Component {
 						showingLocations={this.state.showingLocations}
 						updateQuery={this.updateQuery}
 						show={this.state.showList}
-						toggleLocation={this.toggleInfowindow}
+						toggleLocation={this.clickLocation}
 					/>
 					<Map 
 						locations={this.state.showingLocations}
-						toggleInfo = {this.toggleInfowindow}
-						isClicked = {this.state.isClicked}
+						toggleInfo = {this.clickMarker}
+						closeInfowindow={this.closeInfowindow}
+						isMarkerClicked = {this.state.isMarkerClicked}
+						isLocationClicked={this.state.isLocationClicked}
 						locationClicked={this.state.locationClicked}
 						// animation = {this.state.animation}
 					/>

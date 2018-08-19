@@ -62,7 +62,9 @@ const MyMap = compose(
 					markerLocation={l}
 					position={{ lat: l.location.lat, lng: l.location.lng }}
 					toggleInfo = {props.toggleInfo}
-					isClicked = {props.isClicked}
+					closeInfowindow={props.closeInfowindow}
+					isMarkerClicked = {props.isMarkerClicked}
+					isLocationClicked={props.isLocationClicked}
 					locationClicked={props.locationClicked}
 					// animation = {props.animation}
 				/>
@@ -79,7 +81,9 @@ class Map extends Component {
 				<MyMap 
 					locations={this.props.locations}
 					toggleInfo = {this.props.toggleInfo}
-					isClicked = {this.props.isClicked}
+					closeInfowindow={this.props.closeInfowindow}
+					isMarkerClicked = {this.props.isMarkerClicked}
+					isLocationClicked={this.props.isLocationClicked}
 					locationClicked={this.props.locationClicked}
 					// animation = {this.props.animation}
 				/>
