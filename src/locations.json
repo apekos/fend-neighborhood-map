@@ -5,84 +5,88 @@
 		"location": {
 			"lat" : 37.9715323,
       "lng" : 23.7257492
-		}
+		},
+		"venueId": "4adcdadff964a5205b5821e3"
 	},
 	{
 		"id": 1,
 		"name": "Acropolis Museum",
 		"location": {
-			"lat" : 37.9684499,
-      "lng" : 23.7285227
-		}
+			"lat" : 37.96870011553452,
+      "lng" : 23.728438856291216
+		},
+		"venueId": "4b0fc38bf964a520af6423e3"
 	},
 	{
-		"id": 3,
+		"id": 2,
 		"name": "Monastiraki",
 		"location": {
 			"lat" : 37.9768203,
       "lng" : 23.7245385
-		}
+		},
+		"venueId": "4fc7e194e4b02f26e7278445"
 	},
 	{
-		"id": 4,
+		"id": 3,
 		"name": "Syntagma Square",
 		"location": {
 			"lat" : 37.9755433,
       "lng" : 23.7348515
-		}
+		},
+		"venueId": "4af2b016f964a5203de821e3"
 	},
 	{
-		"id": 5,
+		"id": 4,
 		"name": "National Garden",
 		"location": {
 			"lat" : 37.9728857,
       "lng" : 23.737394
-		}
+		},
+		"venueId": "4cac34fad971b1f7557f2ee1"
 	},
 	{
-		"id": 6,
+		"id": 5,
 		"name": "Byzantine And Christian Museum",
 		"location": {
 			"lat" : 37.9754096,
       "lng" : 23.7445869
-		}
+		},
+		"venueId": "4adcdadff964a520755821e3"
 	},
 	{
-		"id": 7,
+		"id": 6,
 		"name": "National Archaeological Museum",
 		"location": {
 			"lat" : 37.98902289999999,
       "lng" : 23.7327599
-		}
+		},
+		"venueId": "4adcdadff964a520735821e3"
 	},
 	{
-		"id": 8,
+		"id": 7,
 		"name": "Lycabettus Ηill",
 		"location": {
 			"lat" : 37.9817858,
       "lng" : 23.7430565
-		}
+		},
+		"venueId": "4adcdadff964a5205c5821e3"
 	},
 	{
-		"id": 9,
+		"id": 8,
 		"name": "Panathenaic Stadium",
 		"location": {
 			"lat" : 37.9683342,
       "lng" : 23.7411118
-		}
+		},
+		"venueId": "4adcdae1f964a520de5821e3"
 	},
 	{
-		"id": 10,
+		"id": 9,
 		"name": "Temple of Olympian Zeus",
 		"location": {
 			"lat" : 37.9693,
       "lng" : 23.7331
-		}
+		},
+		"venueId": "4adcdadff964a520645821e3"
 	}
-
-
-
-
-
-
 ]

@@ -4,7 +4,7 @@ import { Marker, InfoWindow } from 'react-google-maps';
 class MyMarkers extends Component {
 
 	render() {
-		const { id, position, isMarkerClicked, isLocationClicked, toggleInfo, closeInfowindow, locationClicked, markerLocation} = this.props;
+		const { id, position, isMarkerClicked, isLocationClicked, toggleInfo, locationNames, visitsCount, closeInfowindow, locationClicked, markerLocation} = this.props;
 		let infoWindow;
 		let animation;
 

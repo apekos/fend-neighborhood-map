@@ -51,7 +51,7 @@ const MyMap = compose(
 	withGoogleMap
 )((props) =>
 	<GoogleMap
-		defaultZoom={14}
+		defaultZoom={13}
 		defaultCenter={{ lat: 37.9755433, lng: 23.7348515 }}
 	>
 		{props.locations.map(l => {
@@ -66,7 +66,8 @@ const MyMap = compose(
 					isMarkerClicked = {props.isMarkerClicked}
 					isLocationClicked={props.isLocationClicked}
 					locationClicked={props.locationClicked}
-					// animation = {props.animation}
+					locationNames={props.locationNames}
+					visitsCount={props.visitsCount}
 				/>
 			)
 		})}
@@ -85,7 +86,8 @@ class Map extends Component {
 					isMarkerClicked = {this.props.isMarkerClicked}
 					isLocationClicked={this.props.isLocationClicked}
 					locationClicked={this.props.locationClicked}
-					// animation = {this.props.animation}
+					locationNames={this.props.locationNames}
+					visitsCount={this.props.visitsCount}
 				/>
 			</div>
 		);
