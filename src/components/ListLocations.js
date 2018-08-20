@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ListLocations extends Component {
 	
 	render() {
-		const { query, show, showingLocations, toggleLocation } = this.props;
+		const { query, show, showingLocations, locationNames, rating, toggleLocation } = this.props;
 
 		if (show) {
 			return (

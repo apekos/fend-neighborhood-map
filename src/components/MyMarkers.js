@@ -4,9 +4,8 @@ import { Marker, InfoWindow } from 'react-google-maps';
 class MyMarkers extends Component {
 
 	render() {
-		const { id, position, isMarkerClicked, isLocationClicked, toggleInfo, locationNames, visitsCount, closeInfowindow, locationClicked, markerLocation} = this.props;
+		const { id, position, isMarkerClicked, isLocationClicked, toggleInfo, locationNames, rating, closeInfowindow, locationClicked, markerLocation} = this.props;
 		let infoWindow;
-		let animation;
 
 		if (((isMarkerClicked === true) || (isLocationClicked === true)) && (id === locationClicked)){
 			// animation = 1;
@@ -15,7 +14,8 @@ class MyMarkers extends Component {
 					position={position}
 					onCloseClick={() => closeInfowindow()}
 				>
-					<p>this is an infoWindow</p>
+					<p>{locationNames[id]}</p>
+					<p>{rating[id]}</p>
 				</InfoWindow>
 			);
 		}

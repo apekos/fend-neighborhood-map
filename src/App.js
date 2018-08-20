@@ -17,7 +17,7 @@ class App extends Component {
 		isLocationClicked: false,
 		locationClicked: null,
 		locationNames: null,
-		visitsCount: []
+		rating: null
 		// animation: null
 	}
 	
@@ -31,19 +31,18 @@ class App extends Component {
     .then(response => {
       // Code for handling API response
       if (!response.ok) {
-      	//alert(`Error while retrieving data from FourSquare API.`)
-    	  throw Error(`Failed retrieving data from FourSquare API.`);
+    	  throw Error('Failed retrieving data from FourSquare API.');
     	} else return response.json()
     })
     .then(data => {
-    	console.log(data.response.venue.name)
-    	console.log(data.response.venue.rating)
+    	//console.log(data.response.venue.name)
+    	// console.log(data.response.venue.rating)
     	this.setState({ locationNames: data.response.venue.name })
-    	//this.setState({ visitsCount: data.response.venue.stats.visitsCount })   
+    	this.setState({ rating: data.response.venue.rating })   
     })
-    .catch(function(error) {
+    .catch(error => {
       // Code for handling errors
-      alert('Error while retrieving data from FourSquare API.')
+      alert(error)
       console.log(error)
     });
 	}
@@ -56,21 +55,20 @@ class App extends Component {
 		
 	// 	locations.map(location => {
 	// 		fetch(`${address}/${location.venueId}?client_id=${clientId}&client_secret=${clientSecret}&v=20180812`)
-	//     .then(function(response) {
+	//     .then(response => {
 	//       // Code for handling API response
 	//       if (!response.ok) {
-	//       	//alert(`Error while retrieving data from FourSquare API.`)
- //      	  //throw Error(`Error while retrieving data from FourSquare API.`);
+ //      	  throw Error('Failed retrieving data from FourSquare API.');
  //      	} else return response.json()
 	//     })
-	//     .then(function(data) {
-	//     	//this.setState({ locationNames: data.response.venue.name })
-	//     	this.setState({ visitsCount: data.response.venue.stats.visitsCount })   
+	//     .then(data => {
+	//     	this.setState({ locationNames: data.response.venue.name })
+	//     	this.setState({ rating: data.response.venue.rating })   
 	//     })
-	//     .catch(function(error) {
+	//     .catch(error => {
 	//       // Code for handling errors
-	//       alert(`Error while retrieving data from FourSquare API. ${error}`)
-	//       console.log('Error while retrieving data from FourSquare API.', error)
+	//       alert(error)
+	//       console.log(error)
 	//     });
 	// 	})
 	// }
@@ -111,13 +109,7 @@ class App extends Component {
 		this.setState({ isMarkerClicked: false })
 		this.setState({ isLocationClicked: false })
 	}
-	// toggleInfowindow = (location) => {
-	// 	this.setState(prevState => ({
-	// 		isClicked: !prevState.isClicked
-	// 	}));
-	// 	this.setState({ locationClicked: location.id })
-	// }
-
+	
 	render() {
 		return (
 			<div className="App">
@@ -130,7 +122,7 @@ class App extends Component {
 						show={this.state.showList}
 						toggleLocation={this.clickLocation}
 						locationNames={this.state.locationNames}
-						visitsCount={this.state.visitsCount}
+						rating={this.state.rating}
 					/>
 					<Map 
 						locations={this.state.showingLocations}
@@ -140,7 +132,7 @@ class App extends Component {
 						isLocationClicked={this.state.isLocationClicked}
 						locationClicked={this.state.locationClicked}
 						locationNames={this.state.locationNames}
-						visitsCount={this.state.visitsCount}
+						rating={this.state.rating}
 					/>
 				</div>
 			</div>

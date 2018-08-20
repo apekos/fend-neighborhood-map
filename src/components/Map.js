@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { compose, withProps } from 'recompose';
-import {  withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import {  withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
 import MyMarkers from './MyMarkers.js';
 
 // const MyMap = withScriptjs(withGoogleMap((props) => (
@@ -67,7 +67,7 @@ const MyMap = compose(
 					isLocationClicked={props.isLocationClicked}
 					locationClicked={props.locationClicked}
 					locationNames={props.locationNames}
-					visitsCount={props.visitsCount}
+					rating={props.rating}
 				/>
 			)
 		})}
@@ -87,7 +87,7 @@ class Map extends Component {
 					isLocationClicked={this.props.isLocationClicked}
 					locationClicked={this.props.locationClicked}
 					locationNames={this.props.locationNames}
-					visitsCount={this.props.visitsCount}
+					rating={this.props.rating}
 				/>
 			</div>
 		);
