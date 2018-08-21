@@ -37,7 +37,7 @@ class App extends Component {
       	} else return response.json()
 	    })
 	    .then(data => {
-	    	//names.push(data.response.venue.name)
+	    	names.push(data.response.venue.name)
 	    	ratings.push(data.response.venue.rating)   
 	    })
 	    .catch(error => {
@@ -50,9 +50,9 @@ class App extends Component {
 	}
 
 	// Get the data
-	// componentDidMount() {
-	// 	this.getDataFromFoursquare()
-	// }
+	componentDidMount() {
+		this.getDataFromFoursquare()
+	}
 
 	// 
 	updateQuery = (query) => {
