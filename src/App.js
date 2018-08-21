@@ -111,6 +111,12 @@ class App extends Component {
 						locationNames={this.state.locationNames}
 						rating={this.state.rating}
 					/>
+					{
+						(!navigator.onLine) && 
+	            (<div>
+	              <h2>Map is offline</h2>
+	            </div>)
+          }
 					<Map 
 						locations={this.state.showingLocations}
 						toggleInfo = {this.clickMarker}

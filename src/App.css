@@ -16,6 +16,7 @@ header {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  justify-content: space-between;
 }
 
 .menu {
@@ -80,6 +81,8 @@ h1 {
 	height: 100vh;
 }
 
-@media screen and (max-width: 500px) {
-  
+@media screen and (max-width: 400px) {
+  .sidebar {
+  	width: 120px;
+  }
 }

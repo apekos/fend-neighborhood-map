@@ -15,6 +15,7 @@ class MyMarkers extends Component {
 				>
 					<h3>{locationNames[id]}</h3>
 					<p>Rating: {rating[id] ? rating[id] : '-'}</p>
+					<p><strong>Data retrieved from Foursquare</strong></p>
 				</InfoWindow>
 			);
 		}
