@@ -18,7 +18,6 @@ class App extends Component {
 		locationClicked: null,
 		locationNames: null,
 		rating: null
-		// animation: null
 	}
 	
 	// Function for getting data from Foursquare
@@ -81,14 +80,12 @@ class App extends Component {
 	clickMarker = (location) => {
 		this.setState({ isMarkerClicked: true })
 		this.setState({ locationClicked: location.id })
-		//this.getDataFromFoursquare(location);
 	}
 
 	// When a location on the list is clicked
 	clickLocation = (location) => {
 		this.setState({ isLocationClicked: true })
 		this.setState({ locationClicked: location.id })
-		//this.getDataFromFoursquare(location);
 	}
 
 	// When the infowindow is closed
