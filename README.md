@@ -27,7 +27,7 @@ This is the final project created as part of the Udacity Front-End Developer Nan
 ## Dependencies
 
 * [`creat-react-app`](https://github.com/facebookincubator/create-react-app)
-* [`react-google-maps`](https://www.npmjs.com/package/create-react-app)
+* [`react-google-maps`](https://github.com/tomchentw/react-google-maps)
 * [Foursquare API](https://developer.foursquare.com/)
 * [Google Maps API](https://cloud.google.com/maps-platform/)
 * [Google Fonts](https://fonts.google.com/)
