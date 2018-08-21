@@ -22,7 +22,7 @@ This is the final project created as part of the Udacity Front-End Developer Nan
 
 ## Service Worker
 
-`Create React App`, by default, includes a service worker. To enable it you must run the application in production build.Run `npm run build` to create a build version of the app.
+`Create React App`, by default, includes a service worker. To enable it you must run the application in production build. Run `npm run build` to create a build version of the app.
 
 ## Dependencies
 
