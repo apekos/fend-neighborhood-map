@@ -14,8 +14,7 @@ class MyMarkers extends Component {
 					position={position}
 					onCloseClick={() => closeInfowindow()}
 				>
-					<p>{locationNames[id]}</p>
-					<p>{rating[id]}</p>
+					<p>{rating[id] ? rating[id] : '-'}</p>
 				</InfoWindow>
 			);
 		}

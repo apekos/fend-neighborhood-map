@@ -24,10 +24,10 @@ class App extends Component {
 
 	getDataFromFoursquare = (location) => {
 		let address = 'https://api.foursquare.com/v2/venues'
-		let clientId = 'A1LXA5BZUGLC0DVXIYUO54GIX2ZKVBDL5TGTNJOGKA11JASY'
-		let clientSecret = 'ZPCPNYOQ01ZMGHURSY15TUFYBMX04DP0NQCO5QJFT1K3ER2P'
+		let clientId = '2SGDZPKY5NOEIDG4KHMEVYVE2YY3EVQBUY1WNT1ZXQ5DWMP5'
+		let clientSecret = '3EI4UPHQ3JGUO0BYTFRNLBDWR1P2KRYZASA2LALAFSSMEFBY'
 		
-		fetch(`${address}/${location.venueId}?client_id=${clientId}&client_secret=${clientSecret}&v=20180812`)
+		fetch(`${address}/${location.venueId}?client_id=${clientId}&client_secret=${clientSecret}&v=20180806`)
     .then(response => {
       // Code for handling API response
       if (!response.ok) {
@@ -48,30 +48,34 @@ class App extends Component {
 	}
 
 
-	// componentDidMount() {
-	// 	let address = 'https://api.foursquare.com/v2/venues'
-	// 	let clientId = 'A1LXA5BZUGLC0DVXIYUO54GIX2ZKVBDL5TGTNJOGKA11JASY'
-	// 	let clientSecret = 'ZPCPNYOQ01ZMGHURSY15TUFYBMX04DP0NQCO5QJFT1K3ER2P'
+	componentDidMount() {
+		let address = 'https://api.foursquare.com/v2/venues'
+		let clientId = 'A1LXA5BZUGLC0DVXIYUO54GIX2ZKVBDL5TGTNJOGKA11JASY'
+		let clientSecret = 'ZPCPNYOQ01ZMGHURSY15TUFYBMX04DP0NQCO5QJFT1K3ER2P'
+		let names = []
+		let ratings = []
 		
-	// 	locations.map(location => {
-	// 		fetch(`${address}/${location.venueId}?client_id=${clientId}&client_secret=${clientSecret}&v=20180812`)
-	//     .then(response => {
-	//       // Code for handling API response
-	//       if (!response.ok) {
- //      	  throw Error('Failed retrieving data from FourSquare API.');
- //      	} else return response.json()
-	//     })
-	//     .then(data => {
-	//     	this.setState({ locationNames: data.response.venue.name })
-	//     	this.setState({ rating: data.response.venue.rating })   
-	//     })
-	//     .catch(error => {
-	//       // Code for handling errors
-	//       alert(error)
-	//       console.log(error)
-	//     });
-	// 	})
-	// }
+		locations.map(location => {
+			fetch(`${address}/${location.venueId}?client_id=${clientId}&client_secret=${clientSecret}&v=20180812`)
+	    .then(response => {
+	      // Code for handling API response
+	      if (!response.ok) {
+      	  throw Error('Failed retrieving data from FourSquare API.');
+      	} else return response.json()
+	    })
+	    .then(data => {
+	    	//names.push(data.response.venue.name)
+	    	ratings.push(data.response.venue.likes.count)   
+	    })
+	    .catch(error => {
+	      // Code for handling errors
+	      alert(error)
+	      console.log(error)
+	    });
+		})
+		//this.setState({ locationNames: names })
+   	this.setState({ rating: ratings })
+	}
 
 	updateQuery = (query) => {
     this.setState({ query: query })
@@ -96,13 +100,13 @@ class App extends Component {
 	clickMarker = (location) => {
 		this.setState({ isMarkerClicked: true })
 		this.setState({ locationClicked: location.id })
-		this.getDataFromFoursquare(location);
+		//this.getDataFromFoursquare(location);
 	}
 
 	clickLocation = (location) => {
 		this.setState({ isLocationClicked: true })
 		this.setState({ locationClicked: location.id })
-		this.getDataFromFoursquare(location);
+		//this.getDataFromFoursquare(location);
 	}
 
 	closeInfowindow = () => {
