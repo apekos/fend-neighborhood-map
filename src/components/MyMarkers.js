@@ -8,13 +8,13 @@ class MyMarkers extends Component {
 		let infoWindow;
 
 		if (((isMarkerClicked === true) || (isLocationClicked === true)) && (id === locationClicked)){
-			// animation = 1;
 			infoWindow = (
 				<InfoWindow
 					position={position}
 					onCloseClick={() => closeInfowindow()}
 				>
-					<p>{rating[id] ? rating[id] : '-'}</p>
+					<h3>{locationNames[id]}</h3>
+					<p>Rating: {rating[id] ? rating[id] : '-'}</p>
 				</InfoWindow>
 			);
 		}

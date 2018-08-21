@@ -21,34 +21,8 @@ class App extends Component {
 		// animation: null
 	}
 	
-
-	getDataFromFoursquare = (location) => {
-		let address = 'https://api.foursquare.com/v2/venues'
-		let clientId = '2SGDZPKY5NOEIDG4KHMEVYVE2YY3EVQBUY1WNT1ZXQ5DWMP5'
-		let clientSecret = '3EI4UPHQ3JGUO0BYTFRNLBDWR1P2KRYZASA2LALAFSSMEFBY'
-		
-		fetch(`${address}/${location.venueId}?client_id=${clientId}&client_secret=${clientSecret}&v=20180806`)
-    .then(response => {
-      // Code for handling API response
-      if (!response.ok) {
-    	  throw Error('Failed retrieving data from FourSquare API.');
-    	} else return response.json()
-    })
-    .then(data => {
-    	//console.log(data.response.venue.name)
-    	// console.log(data.response.venue.rating)
-    	this.setState({ locationNames: data.response.venue.name })
-    	this.setState({ rating: data.response.venue.rating })   
-    })
-    .catch(error => {
-      // Code for handling errors
-      alert(error)
-      console.log(error)
-    });
-	}
-
-
-	componentDidMount() {
+	// Function for getting data from Foursquare
+	getDataFromFoursquare = () => {
 		let address = 'https://api.foursquare.com/v2/venues'
 		let clientId = 'A1LXA5BZUGLC0DVXIYUO54GIX2ZKVBDL5TGTNJOGKA11JASY'
 		let clientSecret = 'ZPCPNYOQ01ZMGHURSY15TUFYBMX04DP0NQCO5QJFT1K3ER2P'
@@ -58,30 +32,35 @@ class App extends Component {
 		locations.map(location => {
 			fetch(`${address}/${location.venueId}?client_id=${clientId}&client_secret=${clientSecret}&v=20180812`)
 	    .then(response => {
-	      // Code for handling API response
 	      if (!response.ok) {
       	  throw Error('Failed retrieving data from FourSquare API.');
       	} else return response.json()
 	    })
 	    .then(data => {
 	    	//names.push(data.response.venue.name)
-	    	ratings.push(data.response.venue.likes.count)   
+	    	ratings.push(data.response.venue.rating)   
 	    })
 	    .catch(error => {
-	      // Code for handling errors
 	      alert(error)
 	      console.log(error)
 	    });
 		})
-		//this.setState({ locationNames: names })
+		this.setState({ locationNames: names })
    	this.setState({ rating: ratings })
 	}
 
+	// Get the data
+	// componentDidMount() {
+	// 	this.getDataFromFoursquare()
+	// }
+
+	// 
 	updateQuery = (query) => {
     this.setState({ query: query })
     this.filterList(query)
   }
 
+  // Function for filtering the list locations
   filterList = (query) => {
   	if (query) {
   		const match = new RegExp(escapeRegExp(query), 'i')
@@ -91,24 +70,28 @@ class App extends Component {
   	}
   }
 
+
 	clickMenuBtn = () => {
 		this.setState(prevState => ({
 			showList: !prevState.showList
 		}));
 	}
 
+	// When a marker is clicked
 	clickMarker = (location) => {
 		this.setState({ isMarkerClicked: true })
 		this.setState({ locationClicked: location.id })
 		//this.getDataFromFoursquare(location);
 	}
 
+	// When a location on the list is clicked
 	clickLocation = (location) => {
 		this.setState({ isLocationClicked: true })
 		this.setState({ locationClicked: location.id })
 		//this.getDataFromFoursquare(location);
 	}
 
+	// When the infowindow is closed
 	closeInfowindow = () => {
 		this.setState({ isMarkerClicked: false })
 		this.setState({ isLocationClicked: false })

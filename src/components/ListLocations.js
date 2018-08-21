@@ -7,21 +7,25 @@ class ListLocations extends Component {
 
 		if (show) {
 			return (
-				<div className="sidebar">
+				<nav className="sidebar">
 					<div className="filter">
 						<input
 							type="text"
 							placeholder='Search List'
+							tabIndex='0'
+							aria-label='Filter locations'
 							value={query}
 							onChange={(event) => this.props.updateQuery(event.target.value)}
 						/>
 					</div>
 					<div>
-						<ul className="filter-results">
+						<ul className="filter-results" role="navigation">
 							{showingLocations.map(location => {
 								return(
 									<li 
 										key={location.id}
+										tabIndex={show ? '0' : '1'}
+										aria-label='Locations'
 										onClick={() => {toggleLocation(location)}}
 									>
 										{location.name}
@@ -30,7 +34,7 @@ class ListLocations extends Component {
 							})}
 						</ul>
 					</div>
-				</div>
+				</nav>
 			);
 		} else return null;
 	}
