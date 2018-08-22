@@ -3,6 +3,7 @@ import { compose, withProps } from 'recompose';
 import {  withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
 import MyMarkers from './MyMarkers.js';
 
+
 const MyMap = compose(
 	withProps({
 		googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDQsjBJv4iEpQ5rv6WsvD81pUKg2OqPwuM",

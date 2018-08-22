@@ -13,9 +13,9 @@ class MyMarkers extends Component {
 					position={position}
 					onCloseClick={() => closeInfowindow()}
 				>
-					<div className="infoWindow">
-						<h4>{locationNames[id]}</h4>
-						<p><strong>Rating: {rating[id] ? rating[id] : '-'}</strong></p>
+					<div className="infoWindow" role="dialog">
+						<h4>{locationNames}</h4>
+						<p><strong>Rating: {rating ? rating : '-'}</strong></p>
 						<p><i>Data retrieved from Foursquare</i></p>
 					</div>
 				</InfoWindow>

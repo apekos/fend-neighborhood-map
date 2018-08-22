@@ -19,41 +19,28 @@ class App extends Component {
 		locationNames: null,
 		rating: null
 	}
-	
-	// Function for getting data from Foursquare
-	getDataFromFoursquare = () => {
+
+	getDataFromFoursquare = (location) => {
 		let address = 'https://api.foursquare.com/v2/venues'
 		let clientId = 'A1LXA5BZUGLC0DVXIYUO54GIX2ZKVBDL5TGTNJOGKA11JASY'
 		let clientSecret = 'ZPCPNYOQ01ZMGHURSY15TUFYBMX04DP0NQCO5QJFT1K3ER2P'
-		let names = []
-		let ratings = []
 		
-		locations.map(location => {
-			fetch(`${address}/${location.venueId}?client_id=${clientId}&client_secret=${clientSecret}&v=20180812`)
-	    .then(response => {
-	      if (!response.ok) {
-      	  throw Error('Failed retrieving data from FourSquare API.');
-      	} else return response.json()
-	    })
-	    .then(data => {
-	    	names.push(data.response.venue.name)
-	    	ratings.push(data.response.venue.rating)   
-	    })
-	    .catch(error => {
-	      alert(error)
-	      console.log(error)
-	    });
-		})
-		this.setState({ locationNames: names })
-   	this.setState({ rating: ratings })
+		fetch(`${address}/${location.venueId}?client_id=${clientId}&client_secret=${clientSecret}&v=20180812`)
+    .then(response => {
+      if (!response.ok) {
+    	  throw Error('Failed retrieving data from FourSquare API.');
+    	} else return response.json()
+    })
+    .then(data => {
+    	this.setState({ locationNames: data.response.venue.name })
+    	this.setState({ rating: data.response.venue.rating})   
+    })
+    .catch(error => {
+      alert(error)
+      console.log(error)
+    });
 	}
 
-	// Get the data
-	componentDidMount() {
-		this.getDataFromFoursquare()
-	}
-
-	// 
 	updateQuery = (query) => {
     this.setState({ query: query })
     this.filterList(query)
@@ -80,12 +67,18 @@ class App extends Component {
 	clickMarker = (location) => {
 		this.setState({ isMarkerClicked: true })
 		this.setState({ locationClicked: location.id })
+		this.setState({ locationNames: null })
+    this.setState({ rating: null})
+		this.getDataFromFoursquare(location)
 	}
 
 	// When a location on the list is clicked
 	clickLocation = (location) => {
 		this.setState({ isLocationClicked: true })
 		this.setState({ locationClicked: location.id })
+		this.setState({ locationNames: null })
+    this.setState({ rating: null})
+		this.getDataFromFoursquare(location)
 	}
 
 	// When the infowindow is closed
@@ -93,6 +86,7 @@ class App extends Component {
 		this.setState({ isMarkerClicked: false })
 		this.setState({ isLocationClicked: false })
 	}
+
 	
 	render() {
 		return (
@@ -107,13 +101,7 @@ class App extends Component {
 						toggleLocation={this.clickLocation}
 						locationNames={this.state.locationNames}
 						rating={this.state.rating}
-					/>
-					{
-						(!navigator.onLine) && 
-	            (<div>
-	              <h2>Map is offline</h2>
-	            </div>)
-          }
+					/>			
 					<Map 
 						locations={this.state.showingLocations}
 						toggleInfo = {this.clickMarker}
@@ -131,3 +119,4 @@ class App extends Component {
 }
 
 export default App;
+
